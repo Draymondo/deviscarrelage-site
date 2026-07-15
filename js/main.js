@@ -169,3 +169,30 @@ if (input && btn) {
     });
   });
 })();
+
+// Fonction utilitaire pour envoyer les événements
+const trackEvent = (name) => {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', name);
+  }
+};
+
+// 1. Clics (demo, download, privacy, contact)
+document.getElementById('demoBtn')?.addEventListener('click', () => trackEvent('demo_used'));
+document.getElementById('downloadBtn')?.addEventListener('click', () => trackEvent('download_apk'));
+document.querySelector('a[href*="privacy"]').addEventListener('click', () => trackEvent('privacy_view'));
+document.querySelector('a[href^="mailto"]').addEventListener('click', () => trackEvent('contact_email'));
+
+// 2. Visibilité de la section Tarifs
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      trackEvent('pricing_view');
+      observer.disconnect(); // Pour ne compter la vue qu'une seule fois
+    }
+  });
+});
+observer.observe(document.getElementById('tarifs'));
+
+// 3. Site Open (au chargement)
+window.addEventListener('load', () => trackEvent('site_open'));

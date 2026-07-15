@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevisCarrelage — Tiling finally has its own tool</title>
+<meta name="description" content="DevisCarrelage turns a site visit into a professional quote. Offline, multi-currency, free. Built by a tiler, for tilers.">
+<link rel="canonical" href="https://draymondo.github.io/deviscarrelage-site/en/">
+<link rel="alternate" hreflang="fr" href="https://draymondo.github.io/deviscarrelage-site/">
+<link rel="alternate" hreflang="en" href="https://draymondo.github.io/deviscarrelage-site/en/">
+<link rel="alternate" hreflang="x-default" href="https://draymondo.github.io/deviscarrelage-site/">
+<meta name="theme-color" content="#1565c0">
+
+<meta property="og:title" content="DevisCarrelage — Tiling finally has its own tool">
+<meta property="og:description" content="A professional quote in minutes, offline, multi-currency. Free. Built by a tiler, for tilers.">
+<meta property="og:image" content="https://draymondo.github.io/deviscarrelage-site/assets/feature-graphic.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DevisCarrelage — Tiling quotes, in an instant">
+<meta property="og:url" content="https://draymondo.github.io/deviscarrelage-site/en/">
+<meta property="og:site_name" content="DevisCarrelage">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "DevisCarrelage",
+  "description": "Professional tiling quotes in minutes, offline, multi-currency, free.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "XOF"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <img src="../assets/icon.png" alt="DevisCarrelage">
+      <span class="display" style="font-weight:700;">DevisCarrelage</span>
+    </a>
+    <div class="navlinks">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="../" data-lang-switch="fr" class="lang-switch">FR</a>
+    </div>
+    <a href="#download" class="btn btn-primary btn-sm">Download</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="tile-bg" id="tileBg"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Offline · No job-site data ever sent</div>
+        <h1>Tiling finally has <em>its own tool.</em></h1>
+        <p class="lede">One site visit, one professional quote. Areas, materials, price — calculated in minutes, without a single bar of signal. Built by a tiler, for tilers.</p>
+        <div class="hero-ctas">
+          <a href="#download" class="btn btn-primary">⬇ Download the APK — Free</a>
+          <a href="#how" class="btn btn-ghost">See how it works</a>
+        </div>
+        <div class="hero-meta">
+          <span><strong>v1.0.0</strong> · Android 7.0+</span>
+          <span><strong>~70 MB</strong></span>
+          <span><strong>6 currencies</strong> FCFA · GHS · NGN · GNF · USD · EUR</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="demo-frame reveal" id="demoFrame">
+          <div class="demo-topbar">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <span class="label">Express Mode — live demo</span>
+          </div>
+          <div class="demo-screen">
+            <span class="tag">⚡ One text, one complete quote</span>
+            <textarea class="demo-textarea" id="demoInput" spellcheck="false">Mr Mensah, East Legon 024 555 0123
+Living room floor 45sqm
+Bedroom floor 24sqm
+Bathroom floor 11sqm wall 20sqm
+Install 25 GHS/sqm</textarea>
+            <div class="demo-examples">
+              <button class="chip" data-ex="1">Mr Mensah · Living room + Bedroom + Bath</button>
+              <button class="chip" data-ex="2">Mrs Owusu · Bedroom + Closet</button>
+            </div>
+            <button class="btn btn-primary demo-analyze" id="demoBtn">Analyze &amp; extract</button>
+
+            <div class="demo-result" id="demoResult">
+              <div class="devis-card" id="demoCard"></div>
+              <div class="devis-total">
+                <span class="n">Estimated total</span>
+                <span class="v" id="demoTotal">—</span>
+              </div>
+            </div>
+            <div class="demo-hint">Real calculation, done right in your browser — just like in the app, offline.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <div class="trust-band">
+    <div class="wrap trust-grid">
+      <div class="trust-item">
+        <div class="big">100% offline</div>
+        <div class="small">Your quotes stay on your phone. No connection required, ever.</div>
+      </div>
+      <div class="trust-item">
+        <div class="big">Free for life</div>
+        <div class="small">Unlimited quotes, calculations, PDF export and history — no subscription.</div>
+      </div>
+      <div class="trust-item">
+        <div class="big">6 currencies</div>
+        <div class="small">FCFA, GHS, NGN, GNF, USD, EUR. Automatic formatting for your market.</div>
+      </div>
+      <div class="trust-item">
+        <div class="big">Built by a tiler</div>
+        <div class="small">Designed and tested on real job sites, not in an office.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <span class="kicker">Features</span>
+      <h2>Everything you need on site, nothing you don't.</h2>
+      <p class="intro">Three screens, one goal: a clean quote before you've even left the client.</p>
+
+      <div class="feature-row reveal">
+        <div class="fphone"><img src="../assets/devis-phone.jpg" alt="DevisCarrelage quote creation screen" loading="lazy"></div>
+        <div class="ftext">
+          <span class="fnum">01 — Quote</span>
+          <h3>A complete quote in minutes.</h3>
+          <p>Client, zones to tile, floor and wall areas, materials — every field built to be filled with one thumb, on site, without wifi.</p>
+          <ul>
+            <li>Built-in area calculator (length × width)</li>
+            <li>Automatic, configurable sand/cement calculation</li>
+            <li>Professional PDF export in one tap</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row rev reveal">
+        <div class="fphone"><img src="../assets/express-phone.jpg" alt="DevisCarrelage Express Mode" loading="lazy"></div>
+        <div class="ftext">
+          <span class="fnum">02 — Express Mode</span>
+          <h3>One text, one complete quote.</h3>
+          <p>Describe the job the way you'd jot it in a notebook. DevisCarrelage pulls out zones, areas and rates automatically — exactly like the demo above.</p>
+          <ul>
+            <li>Free-form, natural language input</li>
+            <li>Quick examples to get started instantly</li>
+            <li>AI fallback available for complex descriptions (Pro)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row reveal">
+        <div class="fphone"><img src="../assets/historique-phone.jpg" alt="DevisCarrelage quote history" loading="lazy"></div>
+        <div class="ftext">
+          <span class="fnum">03 — History</span>
+          <h3>Your history, always organized.</h3>
+          <p>Every quote, found in an instant. Edit it, regenerate the PDF, or delete it — without ever losing track of a job.</p>
+          <ul>
+            <li>Instant search by client</li>
+            <li>Amounts and areas visible at a glance</li>
+            <li>Drafts saved automatically</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section grout" id="how" style="background:var(--fond-2);">
+    <div class="wrap">
+      <span class="kicker">Installation</span>
+      <h2>Three steps to lay the first tile.</h2>
+      <p class="intro">DevisCarrelage isn't on the Play Store yet — installation happens straight from this site, just like WhatsApp or Vidmate.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h4>Download the APK</h4>
+          <p>Tap the "Download" button below from your Android phone. The file is about 70 MB.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h4>Allow the install</h4>
+          <p>Android will show an "unknown sources" warning — normal outside official stores. Tap "Allow", then "Install".</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h4>Create your first quote</h4>
+          <p>Open the app, set up your artisan profile, and start your first quote — offline, from minute one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <span class="kicker">Pricing</span>
+      <h2>The essentials, free. Comfort, optional.</h2>
+      <p class="intro">No free feature was ever artificially restricted to push you toward paying — Pro adds, it never takes away.</p>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="plabel">Free</div>
+          <div class="pamount">0 FCFA <span>/ forever</span></div>
+          <p class="pdesc">Everything you need to price and invoice your jobs, without limits.</p>
+          <ul>
+            <li>Unlimited quotes</li>
+            <li>Area and material calculations</li>
+            <li>PDF export (Compact template)</li>
+            <li>Full history</li>
+            <li>Multi-currency (FCFA, GHS, NGN, GNF, USD, EUR)</li>
+            <li>Express Mode (text extraction)</li>
+          </ul>
+        </div>
+        <div class="price-card pro">
+          <div class="plabel">Pro</div>
+          <div class="pamount">≈ 1,500 FCFA <span>/ month</span></div>
+          <p class="pdesc">For tradespeople who want to move faster and present sharper.</p>
+          <ul>
+            <li>Express Mode with AI (complex descriptions)</li>
+            <li>Personal materials catalogue</li>
+            <li>"Modern" PDF quote template</li>
+            <li>Quick-access home screen widgets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="download">
+    <div class="tile-bg on" style="mask-image:radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 70%);"></div>
+    <div class="wrap">
+      <span class="kicker">Ready to go</span>
+      <h2>Your next quote can start right now.</h2>
+      <p>No account to create. No connection required. Just the app, on your phone.</p>
+      <a href="https://github.com/Draymondo/deviscarrelage-site/releases/download/v1.0.0/DevisCarrelage-20260709-2307.apk" id="downloadBtn" class="btn btn-primary" style="font-size:1.05rem; padding:16px 32px;">⬇ Download DevisCarrelage.apk</a>
+
+      <div class="checksum">
+        <span>SHA-256 fingerprint of the signing certificate (authenticity check)</span>
+        <code>cd371d5deb5e9d5124323af71cb7dbf15b4987ed6119970f337417b3f9140b18</code>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="../assets/icon.png" alt="DevisCarrelage">
+      <span>© 2026 DevisCarrelage — powered by ATMOS technology — Abidjan, Côte d'Ivoire</span>
+    </div>
+    <div class="foot-links">
+      <a href="https://draymondo.github.io/deviscarrelage-privacy/" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:support.deviscarrelage@gmail.com">Support</a>
+      <a href="../" data-lang-switch="fr">Français</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

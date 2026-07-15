@@ -45,6 +45,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCxIyC6GrrvquyfzNs_tpM2Y1fc9B61D0U",
+    authDomain: "deviscarrelage-1078b.firebaseapp.com",
+    projectId: "deviscarrelage-1078b",
+    storageBucket: "deviscarrelage-1078b.firebasestorage.app",
+    messagingSenderId: "67278960186",
+    appId: "1:67278960186:web:30c41aecda69907858a703",
+    measurementId: "G-K8M9WVDPBG"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+  
 </head>
 <body>
 
@@ -285,26 +304,6 @@ Pose 2000F/m²</textarea>
 </footer>
 
 <script src="js/main.js" defer></script>
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCxIyC6GrrvquyfzNs_tpM2Y1fc9B61D0U",
-  authDomain: "deviscarrelage-1078b.firebaseapp.com",
-  projectId: "deviscarrelage-1078b",
-  storageBucket: "deviscarrelage-1078b.firebasestorage.app",
-  messagingSenderId: "67278960186",
-  appId: "1:67278960186:web:30c41aecda69907858a703",
-  measurementId: "G-K8M9WVDPBG"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 </body>
 </html>

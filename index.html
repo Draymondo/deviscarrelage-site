@@ -285,6 +285,23 @@ Pose 2000F/m²</textarea>
 </footer>
 
 <script src="js/main.js" defer></script>
+<!-- Firebase Analytics -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
 
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCxIyC6GrrvquyfzNs_tpM2Y1fc9B61D0U",
+    authDomain: "deviscarrelage-1078b.firebaseapp.com",
+    projectId: "deviscarrelage-1078b",
+    storageBucket: "deviscarrelage-1078b.firebasestorage.app",
+    messagingSenderId: "67278960186",
+    appId: "1:67278960186:web:30c41aecda69907858a703",
+    measurementId: "G-K8M9WVDPBG"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 </html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevisCarrelage — Le carrelage a enfin son outil</title>
+<meta name="description" content="DevisCarrelage transforme une visite de chantier en devis professionnel. Hors ligne, multi-devises, gratuit. Fait par un carreleur, pour les carreleurs.">
+<meta property="og:title" content="DevisCarrelage — Le carrelage a enfin son outil">
+<meta property="og:description" content="Devis professionnel en quelques minutes, hors ligne, multi-devises. Gratuit. Fait par un carreleur, pour les carreleurs.">
+<meta property="og:image" content="assets/feature-graphic.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <img src="assets/icon.png" alt="DevisCarrelage">
+      <span class="display" style="font-weight:700;">DevisCarrelage</span>
+    </a>
+    <div class="navlinks">
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#comment">Comment ça marche</a>
+      <a href="#tarifs">Tarifs</a>
+    </div>
+    <a href="#telecharger" class="btn btn-primary btn-sm">Télécharger</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="tile-bg" id="tileBg"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Hors ligne · Aucune donnée de chantier envoyée</div>
+        <h1>Le carrelage a enfin <em>son outil.</em></h1>
+        <p class="lede">Une visite de chantier, un devis professionnel. Surfaces, matériaux, prix — calculés en quelques minutes, sans une seule barre de réseau. Conçu par un carreleur, pour des carreleurs.</p>
+        <div class="hero-ctas">
+          <a href="#telecharger" class="btn btn-primary">⬇ Télécharger l'APK — Gratuit</a>
+          <a href="#comment" class="btn btn-ghost">Comment ça marche</a>
+        </div>
+        <div class="hero-meta">
+          <span><strong>v1.0.0</strong> · Android 7.0+</span>
+          <span><strong>~70 Mo</strong></span>
+          <span><strong>6 devises</strong> FCFA · GHS · NGN · GNF · USD · EUR</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="demo-frame reveal" id="demoFrame">
+          <div class="demo-topbar">
+            <div class="lights"><span></span><span></span><span></span></div>
+            <span class="label">Mode Express — démo en direct</span>
+          </div>
+          <div class="demo-screen">
+            <span class="tag">⚡ Un texte, un devis complet</span>
+            <textarea class="demo-textarea" id="demoInput" spellcheck="false">Mr Koné, Cocody 07 00 00 00
+Salon sol 45m²
+Chambre sol 24m²
+Salle de bain sol 11m² mur 20m²
+Pose 2000F/m²</textarea>
+            <div class="demo-examples">
+              <button class="chip" data-ex="1">Mr Koné · Salon + Chambre + SDB</button>
+              <button class="chip" data-ex="2">Mme Diabaté · Chambre + Dressing</button>
+            </div>
+            <button class="btn btn-primary demo-analyze" id="demoBtn">Analyser et extraire</button>
+
+            <div class="demo-result" id="demoResult">
+              <div class="devis-card" id="demoCard"></div>
+              <div class="devis-total">
+                <span class="n">Total estimé</span>
+                <span class="v" id="demoTotal">—</span>
+              </div>
+            </div>
+            <div class="demo-hint">Calcul réel effectué dans votre navigateur — comme dans l'app, hors ligne.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAND -->
+  <div class="trust-band">
+    <div class="wrap trust-grid">
+      <div class="trust-item">
+        <div class="big">100 % hors ligne</div>
+        <div class="small">Vos devis restent sur votre téléphone. Aucune connexion requise, jamais.</div>
+      </div>
+      <div class="trust-item">
+        <div class="big">Gratuit à vie</div>
+        <div class="small">Devis illimités, calculs, export PDF et historique — sans abonnement.</div>
+      </div>
+      <div class="trust-item">
+        <div class="big">6 devises</div>
+        <div class="small">FCFA, GHS, NGN, GNF, USD, EUR. Formatage automatique selon votre marché.</div>
+      </div>
+      <div class="trust-item">
+        <div class="big">Par un carreleur</div>
+        <div class="small">Conçu et testé sur de vrais chantiers, pas dans un bureau.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section" id="fonctionnalites">
+    <div class="wrap">
+      <span class="kicker">Fonctionnalités</span>
+      <h2>Tout ce qu'il faut sur le chantier, rien de superflu.</h2>
+      <p class="intro">Trois écrans, un seul objectif : sortir un devis propre avant même d'avoir quitté le client.</p>
+
+      <div class="feature-row reveal">
+        <div class="fphone"><img src="assets/devis-phone.jpg" alt="Écran de création de devis DevisCarrelage" loading="lazy"></div>
+        <div class="ftext">
+          <span class="fnum">01 — Devis</span>
+          <h3>Un devis complet en quelques minutes.</h3>
+          <p>Client, zones à carreler, surfaces sol et mur, matériaux — chaque champ pensé pour être rempli d'un doigt, sur un chantier, sans wifi.</p>
+          <ul>
+            <li>Calculatrice de surface intégrée (longueur × largeur)</li>
+            <li>Calcul automatique sable / ciment configurable</li>
+            <li>Export PDF professionnel en un tap</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row rev reveal">
+        <div class="fphone"><img src="assets/express-phone.jpg" alt="Mode Express DevisCarrelage" loading="lazy"></div>
+        <div class="ftext">
+          <span class="fnum">02 — Mode Express</span>
+          <h3>Un texte, un devis complet.</h3>
+          <p>Décrivez le chantier comme vous le noteriez sur un carnet. DevisCarrelage extrait zones, surfaces et tarifs automatiquement — exactement comme la démo ci-dessus.</p>
+          <ul>
+            <li>Saisie libre en langage naturel</li>
+            <li>Exemples rapides pour démarrer instantanément</li>
+            <li>Fallback IA disponible pour les descriptions complexes (Pro)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row reveal">
+        <div class="fphone"><img src="assets/historique-phone.jpg" alt="Historique des devis DevisCarrelage" loading="lazy"></div>
+        <div class="ftext">
+          <span class="fnum">03 — Historique</span>
+          <h3>Votre historique, toujours organisé.</h3>
+          <p>Tous vos devis, retrouvables en un instant. Modifiez, régénérez le PDF ou supprimez — sans jamais perdre le fil d'un chantier.</p>
+          <ul>
+            <li>Recherche instantanée par client</li>
+            <li>Montants et surfaces visibles d'un coup d'œil</li>
+            <li>Sauvegarde automatique de vos brouillons</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section grout" id="comment" style="background:var(--fond-2);">
+    <div class="wrap">
+      <span class="kicker">Installation</span>
+      <h2>Trois étapes pour poser la première pierre.</h2>
+      <p class="intro">DevisCarrelage n'est pas encore sur le Play Store — l'installation se fait directement depuis ce site, comme WhatsApp ou Vidmate.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h4>Téléchargez l'APK</h4>
+          <p>Appuyez sur le bouton "Télécharger" ci-dessous depuis votre téléphone Android. Le fichier fait environ 70 Mo.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h4>Autorisez l'installation</h4>
+          <p>Android affichera un avertissement pour les sources inconnues — c'est normal hors des stores officiels. Appuyez sur "Autoriser" puis "Installer".</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h4>Créez votre premier devis</h4>
+          <p>Ouvrez l'app, renseignez votre profil artisan, et lancez votre premier devis — hors ligne, dès la première minute.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="tarifs">
+    <div class="wrap">
+      <span class="kicker">Tarifs</span>
+      <h2>L'essentiel gratuit. Le confort, en option.</h2>
+      <p class="intro">Aucune fonctionnalité gratuite n'a été restreinte artificiellement pour vous pousser vers le payant — le Pro ajoute, il ne retire rien.</p>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="plabel">Gratuit</div>
+          <div class="pamount">0 FCFA <span>/ pour toujours</span></div>
+          <p class="pdesc">Tout ce qu'il faut pour chiffrer et facturer vos chantiers, sans limite.</p>
+          <ul>
+            <li>Devis illimités</li>
+            <li>Calculs de surfaces et matériaux</li>
+            <li>Export PDF (modèle Compact)</li>
+            <li>Historique complet</li>
+            <li>Multi-devises (FCFA, GHS, NGN, GNF, USD, EUR)</li>
+            <li>Mode Express (extraction par texte)</li>
+          </ul>
+        </div>
+        <div class="price-card pro">
+          <div class="plabel">Pro</div>
+          <div class="pamount">≈ 1 500 FCFA <span>/ mois</span></div>
+          <p class="pdesc">Pour les artisans qui veulent aller plus vite et présenter plus loin.</p>
+          <ul>
+            <li>Mode Express avec IA (descriptions complexes)</li>
+            <li>Catalogue personnel de matériaux</li>
+            <li>Modèle de devis PDF "Moderne"</li>
+            <li>Widgets d'accès rapide sur l'écran d'accueil</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="telecharger">
+    <div class="tile-bg on" style="mask-image:radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 70%);"></div>
+    <div class="wrap">
+      <span class="kicker">Prêt à l'emploi</span>
+      <h2>Votre prochain devis peut commencer maintenant.</h2>
+      <p>Aucun compte à créer. Aucune connexion requise. Juste l'application, sur votre téléphone.</p>
+      <a href="#" id="downloadBtn" class="btn btn-primary" style="font-size:1.05rem; padding:16px 32px;">⬇ Télécharger DevisCarrelage.apk</a>
+
+      <div class="checksum">
+        <span>Empreinte SHA-256 du certificat de signature (vérification d'authenticité)</span>
+        <code>cd371d5deb5e9d5124323af71cb7dbf15b4987ed6119970f337417b3f9140b18</code>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/icon.png" alt="DevisCarrelage">
+      <span>© 2026 DevisCarrelage — powered by ATMOS technology — Abidjan, Côte d'Ivoire</span>
+    </div>
+    <div class="foot-links">
+      <a href="https://draymondo.github.io/deviscarrelage-privacy/" target="_blank" rel="noopener">Confidentialité</a>
+      <a href="mailto:support.deviscarrelage@gmail.com">Support</a>
+      <a href="#top">Haut de page</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+
+</body>
+</html>

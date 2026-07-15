@@ -103,5 +103,5 @@ Pose 2500F/m²`
   // ---- download button placeholder ----
   document.getElementById('downloadBtn').addEventListener('click', (e) => {
     e.preventDefault();
-    alert("Lien de téléchargement à configurer : remplace l'attribut href de #downloadBtn par le lien direct vers ton APK (ex. GitHub Releases).");
+    alert("https://github.com/Draymondo/deviscarrelage-site/releases/download/v1.0.0/DevisCarrelage-20260709-2307.apk");
   });

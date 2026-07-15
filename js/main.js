@@ -100,8 +100,3 @@ Pose 2500F/m²`
   // auto-run once on load so visitors see it working immediately
   window.addEventListener('load', () => setTimeout(runDemo, 900));
 
-  // ---- download button placeholder ----
-  document.getElementById('downloadBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    alert("https://github.com/Draymondo/deviscarrelage-site/releases/download/v1.0.0/DevisCarrelage-20260709-2307.apk");
-  });

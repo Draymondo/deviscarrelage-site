@@ -100,3 +100,27 @@ Pose 2500F/m²`
   // auto-run once on load so visitors see it working immediately
   window.addEventListener('load', () => setTimeout(runDemo, 900));
 
+const STORAGE_KEY = 'devisLangPref';
+const stored = localStorage.getItem(STORAGE_KEY);
+const onEnPage = window.location.pathname.includes('/en/');
+
+if (stored) {
+  // L'utilisateur a déjà choisi une langue manuellement → on la respecte
+  if (stored === 'en' && !onEnPage) window.location.replace('en/');
+  else if (stored === 'fr' && onEnPage) window.location.replace('../');
+} else {
+  // Aucun choix encore fait → on détecte la langue du téléphone/navigateur
+  const prefersEnglish = (navigator.language || 'fr').toLowerCase().startsWith('en');
+  if (prefersEnglish && !onEnPage) window.location.replace('en/');
+  else if (!prefersEnglish && onEnPage) window.location.replace('../');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-lang-switch]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const target = el.getAttribute('data-lang-switch');
+      localStorage.setItem('devisLangPref', target);
+      // la navigation normale du lien continue après ça
+    });
+  });
+});
+

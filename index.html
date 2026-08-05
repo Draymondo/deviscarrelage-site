@@ -78,7 +78,6 @@
     <div class="navlinks">
       <a href="#fonctionnalites">Fonctionnalités</a>
       <a href="#comment">Comment ça marche</a>
-      <a href="#tarifs">Tarifs</a>
       <a href="en/" data-lang-switch="en" class="lang-switch">EN</a>
     </div>
     <a href="#telecharger" class="btn btn-primary btn-sm">Télécharger</a>
@@ -92,11 +91,11 @@
     <div class="tile-bg" id="tileBg"></div>
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow"><span class="dot"></span> Hors ligne · Aucune donnée de chantier envoyée</div>
         <h1>Le carrelage a enfin <em>son outil.</em></h1>
         <p class="lede">Une visite de chantier, un devis professionnel. Surfaces, matériaux, prix — calculés en quelques minutes, sans une seule barre de réseau. Conçu par un carreleur, pour des carreleurs.</p>
         <div class="hero-ctas">
-          <a href="#comment" class="btn btn-primary">Comment ça marche</a>
+          <a href="https://github.com/Draymondo/deviscarrelage-site/releases/download/v1.0.0/DevisCarrelage-20260709-2307.apk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Télécharger</a>
+          <a href="#comment" class="btn btn-ghost">Comment ça marche</a>
         </div>
       </div>
 
@@ -231,41 +230,6 @@ Pose 2000F/m²</textarea>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section class="section" id="tarifs">
-    <div class="wrap">
-      <span class="kicker">Tarifs</span>
-      <h2>L'essentiel gratuit. Le confort, en option.</h2>
-      <p class="intro">Aucune fonctionnalité gratuite n'a été restreinte artificiellement pour vous pousser vers le payant — le Pro ajoute, il ne retire rien.</p>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="plabel">Gratuit</div>
-          <div class="pamount">0 FCFA <span>/ pour toujours</span></div>
-          <p class="pdesc">Tout ce qu'il faut pour chiffrer et facturer vos chantiers, sans limite.</p>
-          <ul>
-            <li>Devis illimités</li>
-            <li>Calculs de surfaces et matériaux</li>
-            <li>Export PDF (modèle Compact)</li>
-            <li>Historique complet</li>
-            <li>Multi-devises (FCFA, GHS, NGN, GNF, USD, EUR)</li>
-            <li>Mode Express (extraction par texte)</li>
-          </ul>
-        </div>
-        <div class="price-card pro">
-          <div class="plabel">Pro</div>
-          <div class="pamount">≈ 1 500 FCFA <span>/ mois</span></div>
-          <p class="pdesc">Pour les artisans qui veulent aller plus vite et présenter plus loin.</p>
-          <ul>
-            <li>Mode Express avec IA (descriptions complexes)</li>
-            <li>Catalogue personnel de matériaux</li>
-            <li>Modèle de devis PDF "Moderne"</li>
-            <li>Widgets d'accès rapide sur l'écran d'accueil</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FINAL CTA -->
   <section class="final-cta" id="telecharger">
     <div class="tile-bg on" style="mask-image:radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 70%);"></div>
@@ -282,22 +246,18 @@ Pose 2000F/m²</textarea>
       <div style="margin-top:34px;">
         <span style="display:block; font-size:.85rem; color:var(--texte-att); margin-bottom:14px; letter-spacing:.02em;">Aussi disponible sur</span>
         <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
-          <a href="https://deviscarrelage.fr.uptodown.com/android" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center;">
+          <a href="https://deviscarrelage.fr.uptodown.com/android" target="_blank" rel="noopener noreferrer" class="store-badge" style="display:inline-flex; align-items:center;">
             <img src="assets/uptodown.svg" alt="Disponible sur Uptodown" style="height:48px; width:auto;">
           </a>
-          <a href="https://apkpure.com/deviscarrelage/com.djadoo.DevisCarrelage" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center;">
+          <a href="https://apkpure.com/deviscarrelage/com.djadoo.DevisCarrelage" target="_blank" rel="noopener noreferrer" class="store-badge" style="display:inline-flex; align-items:center;">
             <img src="assets/apkpure.svg" alt="Disponible sur APKPure" style="height:48px; width:auto;">
           </a>
         </div>
       </div>
-
-      <div class="checksum">
-        <span>Empreinte SHA-256 du certificat de signature (vérification d'authenticité)</span>
-        <code>cd371d5deb5e9d5124323af71cb7dbf15b4987ed6119970f337417b3f9140b18</code>
     </div>
   </section>
 
-</main>
+  </main>
 
 <footer>
   <div class="wrap foot-grid">
@@ -309,6 +269,13 @@ Pose 2000F/m²</textarea>
       <a href="https://draymondo.github.io/deviscarrelage-privacy/" target="_blank" rel="noopener">Confidentialité</a>
       <a href="mailto:support.deviscarrelage@gmail.com">Support</a>
       <a href="#top">Haut de page</a>
+      <details class="checksum-details">
+        <summary>Vérifier l'authenticité de l'APK</summary>
+        <div class="checksum">
+          <span>Empreinte SHA-256 du certificat de signature</span>
+          <code>cd371d5deb5e9d5124323af71cb7dbf15b4987ed6119970f337417b3f9140b18</code>
+        </div>
+      </details>
     </div>
   </div>
 </footer>

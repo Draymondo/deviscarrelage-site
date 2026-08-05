@@ -68,6 +68,24 @@ if (input && btn) {
     });
   });
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function animateCount(el, targetValue, suffix, duration = 700) {
+    if (prefersReducedMotion) {
+      el.textContent = targetValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ' + suffix;
+      return;
+    }
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(targetValue * eased);
+      el.textContent = current.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ' + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   function formatAmount(n) {
     return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ' + currencySuffix[pageLang];
   }
@@ -120,7 +138,7 @@ if (input && btn) {
     card.innerHTML = rowsHtml;
 
     if (tarif > 0) {
-      totalEl.textContent = formatAmount(totalSurface * tarif);
+      animateCount(totalEl, Math.round(totalSurface * tarif), currencySuffix[pageLang]);
     } else {
       const noTarifLabel = pageLang === 'en' ? 'rate not detected' : 'tarif non détecté';
       totalEl.textContent = totalSurface.toFixed(1).replace('.0', '') + ' ' + unit + ' · ' + noTarifLabel;
@@ -183,16 +201,21 @@ document.getElementById('downloadBtn')?.addEventListener('click', () => trackEve
 document.querySelector('a[href*="privacy"]').addEventListener('click', () => trackEvent('privacy_view'));
 document.querySelector('a[href^="mailto"]').addEventListener('click', () => trackEvent('contact_email'));
 
-// 2. Visibilité de la section Tarifs
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      trackEvent('pricing_view');
-      observer.disconnect(); // Pour ne compter la vue qu'une seule fois
-    }
-  });
-});
-observer.observe(document.getElementById('tarifs'));
-
 // 3. Site Open (au chargement)
 window.addEventListener('load', () => trackEvent('site_open'));
+
+// ---- subtle parallax on hero tile background ----
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const heroBg = document.querySelector('.hero .tile-bg');
+  if (!heroBg) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      heroBg.style.backgroundPosition = `0px ${window.scrollY * 0.15}px`;
+      ticking = false;
+    });
+  }, { passive: true });
+})();

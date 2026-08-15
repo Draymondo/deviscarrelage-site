@@ -232,6 +232,9 @@
   .foot-links{display:flex; gap:24px; font-size:.86rem; color:var(--texte-att);}
   .foot-links a{text-decoration:none;}
   .foot-links a:hover{color:#fff;}
+  .foot-links .saashub-badge{display:flex; align-items:center; opacity:.85; transition:opacity .2s ease;}
+  .foot-links .saashub-badge:hover{opacity:1;}
+  .foot-links .saashub-badge img{display:block; height:24px; width:auto;}
   .checksum-details{position:relative;}
   .checksum-details summary{cursor:pointer; list-style:none;}
   .checksum-details summary::-webkit-details-marker{display:none;}

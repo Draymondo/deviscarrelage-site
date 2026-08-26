@@ -219,3 +219,72 @@ window.addEventListener('load', () => trackEvent('site_open'));
     });
   }, { passive: true });
 })();
+// ---- Anciennes versions (chargées depuis l'API GitHub Releases) ----
+(function () {
+  const container = document.getElementById('oldVersionsList');
+  const details = document.getElementById('oldVersionsDetails');
+  if (!container || !details) return;
+
+  let loaded = false;
+
+  details.addEventListener('toggle', () => {
+    if (details.open && !loaded) {
+      loaded = true;
+      loadReleases();
+    }
+  });
+
+  async function loadReleases() {
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+    const cacheKey = 'dc_releases_cache_v1';
+    const cached = sessionStorage.getItem(cacheKey);
+
+    try {
+      let releases;
+      if (cached) {
+        releases = JSON.parse(cached);
+      } else {
+        const res = await fetch('https://api.github.com/repos/Draymondo/deviscarrelage-site/releases');
+        if (!res.ok) throw new Error('API error ' + res.status);
+        releases = await res.json();
+        sessionStorage.setItem(cacheKey, JSON.stringify(releases));
+      }
+
+      if (!Array.isArray(releases) || releases.length === 0) {
+        container.textContent = lang === 'en' ? 'No versions found.' : 'Aucune version trouvée.';
+        return;
+      }
+
+      const locale = lang === 'en' ? 'en-US' : 'fr-FR';
+      container.innerHTML = releases.map(rel => {
+        const apkAsset = (rel.assets || []).find(a => a.name.endsWith('.apk'));
+        if (!apkAsset) return '';
+
+        const date = new Date(rel.published_at).toLocaleDateString(locale, {
+          day: '2-digit', month: 'long', year: 'numeric'
+        });
+        const firstLine = (rel.body || '').split('\n').find(l => l.trim().length > 0) || '';
+        const version = rel.name || rel.tag_name;
+
+        return `
+          <div style="margin-bottom:14px; padding-bottom:14px; border-bottom:1px dashed var(--joint-fonce);">
+            <strong>${escapeHtml(version)}</strong> — ${date}<br>
+            ${firstLine ? `<span style="color:var(--texte-att); font-size:.85rem;">${escapeHtml(firstLine)}</span><br>` : ''}
+            <a href="${apkAsset.browser_download_url}" target="_blank" rel="noopener noreferrer">${lang === 'en' ? 'Download' : 'Télécharger'} →</a>
+          </div>
+        `;
+      }).join('') || (lang === 'en' ? 'No versions found.' : 'Aucune version trouvée.');
+
+    } catch (e) {
+      container.textContent = lang === 'en'
+        ? 'Unable to load version history right now.'
+        : 'Impossible de charger l’historique des versions pour le moment.';
+    }
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+})();

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrelo — Bientôt disponible</title>
+<meta name="description" content="Carrelo, le calcul de matériaux de carrelage en un instant. Par les créateurs de DevisCarrelage. Bientôt disponible.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1565c0">
+
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --fond:#0a0e14;
+    --fond-2:#0e1420;
+    --panneau:#121a26;
+    --bleu:#1565c0;
+    --orange:#f57c00;
+    --orange-clair:#ffb066;
+    --porcelaine:#eef0f2;
+    --joint:#5b6472;
+    --joint-fonce:#2a3441;
+    --texte:#eef0f2;
+    --texte-att:#9aa5b3;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--fond);
+    color:var(--texte);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .display{font-family:'Quicksand', sans-serif; font-weight:700;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  .tile-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--joint-fonce) 1px, transparent 1px),
+      linear-gradient(90deg, var(--joint-fonce) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, black 10%, transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, black 10%, transparent 75%);
+    transition:opacity 1.4s ease;
+    pointer-events:none;
+  }
+  .tile-bg.on{opacity:.5;}
+
+  header{padding:28px 0; position:relative; z-index:2;}
+  header .wrap{max-width:640px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between;}
+  .backlink{font-size:.85rem; color:var(--texte-att); text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:color .2s;}
+  .backlink:hover{color:#fff;}
+
+  main{
+    flex:1; position:relative; display:flex; align-items:center; justify-content:center;
+    padding:40px 24px 80px;
+  }
+  .hero{max-width:480px; text-align:center; position:relative; z-index:2;}
+
+  .icon{
+    width:88px; height:88px; border-radius:20px; background:var(--bleu);
+    margin:0 auto 28px; display:flex; align-items:center; justify-content:center;
+  }
+  .icon svg{display:block;}
+
+  .badge{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono', monospace;
+    font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--orange-clair);
+    background:rgba(245,124,0,.12); border:1px solid rgba(245,124,0,.28);
+    padding:7px 14px; border-radius:100px; margin-bottom:22px;
+  }
+  .badge .dot{width:6px; height:6px; border-radius:50%; background:var(--orange); animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+
+  h1{font-size:clamp(2.1rem, 6vw, 2.9rem); color:#fff; margin-bottom:16px; line-height:1.1;}
+  h1 span{color:var(--orange);}
+  .lede{font-size:1.05rem; color:var(--texte-att); margin-bottom:34px; line-height:1.6;}
+
+  .notify{
+    display:inline-flex; align-items:center; gap:10px; background:var(--panneau);
+    border:1px solid var(--joint-fonce); border-radius:12px; padding:14px 20px;
+    font-size:.88rem; color:var(--texte-att);
+  }
+  .notify a{color:var(--orange-clair); font-weight:600; text-decoration:none;}
+  .notify a:hover{text-decoration:underline;}
+
+  footer{padding:28px 24px; text-align:center; position:relative; z-index:2;}
+  footer p{font-size:.78rem; color:var(--texte-att);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="tile-bg" id="tileBg"></div>
+
+<header>
+  <div class="wrap">
+    <a href="../" class="backlink">← DevisCarrelage</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="icon">
+      <svg width="44" height="44" viewBox="0 0 44 44">
+        <rect x="2" y="2" width="18" height="18" rx="3" fill="#ffffff"/>
+        <rect x="24" y="2" width="18" height="18" rx="3" fill="#ffffff" opacity="0.85"/>
+        <rect x="2" y="24" width="18" height="18" rx="3" fill="#ffffff" opacity="0.85"/>
+        <rect x="24" y="24" width="18" height="18" rx="3" fill="#f57c00"/>
+      </svg>
+    </div>
+
+    <span class="badge"><span class="dot"></span>En construction</span>
+
+    <h1 class="display">Carrel<span>o</span></h1>
+    <p class="lede">Le calcul de matériaux de carrelage, en un instant. Pour les carreleurs pros comme pour ceux qui posent eux-mêmes. Par les créateurs de DevisCarrelage.</p>
+
+    <div class="notify">
+      Une question, une envie d'être prévenu au lancement ? <a href="mailto:support.deviscarrelage@gmail.com">Écrivez-nous</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 ATMOS technology — Abidjan, Côte d'Ivoire</p>
+</footer>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  requestAnimationFrame(() => {
+    const bg = document.getElementById('tileBg');
+    if (bg) bg.classList.add('on');
+  });
+});
+</script>
+
+</body>
+</html>

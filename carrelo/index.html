@@ -97,6 +97,31 @@
   footer{padding:28px 24px; text-align:center; position:relative; z-index:2;}
   footer p{font-size:.78rem; color:var(--texte-att);}
 
+  .sound-toggle{
+    position:fixed; bottom:22px; right:22px; z-index:10;
+    width:48px; height:48px; border-radius:50%;
+    background:var(--panneau); border:1px solid var(--joint-fonce);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:var(--texte-att);
+    transition:border-color .2s ease, color .2s ease, transform .15s ease;
+  }
+  .sound-toggle:hover{border-color:var(--joint); color:#fff;}
+  .sound-toggle:active{transform:scale(.94);}
+  .sound-toggle svg{width:20px; height:20px;}
+  .sound-toggle .icon-off{display:block;}
+  .sound-toggle .icon-on{display:none;}
+  .sound-toggle.playing{border-color:rgba(245,124,0,.5); color:var(--orange-clair);}
+  .sound-toggle.playing .icon-off{display:none;}
+  .sound-toggle.playing .icon-on{display:block;}
+  .sound-toggle.playing::after{
+    content:""; position:absolute; inset:-4px; border-radius:50%;
+    border:1px solid rgba(245,124,0,.35); animation:soundRing 1.8s ease-out infinite;
+  }
+  @keyframes soundRing{
+    0%{transform:scale(.85); opacity:.8;}
+    100%{transform:scale(1.25); opacity:0;}
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
   }
@@ -105,6 +130,11 @@
 <body>
 
 <div class="tile-bg" id="tileBg"></div>
+
+<button class="sound-toggle" id="soundToggle" type="button" aria-label="Activer la musique" aria-pressed="false" title="Musique">
+  <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+</button>
 
 <header>
   <div class="wrap">
@@ -126,7 +156,7 @@
     <span class="badge"><span class="dot"></span>En construction</span>
 
     <h1 class="display">Carrel<span>o</span></h1>
-    <p class="lede">Le calcul de matériaux de carrelage, en un instant. Pour les carreleurs pros comme pour ceux qui veulent juste avoir une idée. Par les créateurs de DevisCarrelage.</p>
+    <p class="lede">Le calcul de matériaux de carrelage, en un instant. Pour les carreleurs pros comme pour ceux qui posent eux-mêmes. Par les créateurs de DevisCarrelage.</p>
 
     <div class="notify">
       Une question, une envie d'être prévenu au lancement ? <a href="mailto:support.deviscarrelage@gmail.com">Écrivez-nous</a>
@@ -145,6 +175,163 @@ window.addEventListener('DOMContentLoaded', () => {
     if (bg) bg.classList.add('on');
   });
 });
+</script>
+
+<script>
+// ---- nappe ambiante générée (aucun fichier audio, aucun droit d'auteur) ----
+// Accords lents qui s'enchaînent avec un fondu, + une couche scintillante
+// pour une ambiance "eau/air" plutôt qu'une mélodie qui se répète.
+(function () {
+  const STORAGE_KEY = 'carreloMusicPref';
+  const btn = document.getElementById('soundToggle');
+  if (!btn) return;
+
+  let audioCtx = null;
+  let masterGain = null;
+  let delayNode = null;
+  let isPlaying = false;
+  let chordTimer = null;
+  let shimmerTimer = null;
+  let chordIndex = 0;
+
+  const CHORD_DURATION = 9;   // secondes tenues par accord
+  const FADE = 3.2;           // secondes de montée/descente
+  const OVERLAP = 0.15;       // léger chevauchement pour éviter les trous
+
+  // Accords étendus (add9 / maj7), registre grave à médium — ambiance de nappe
+  const chords = [
+    [130.81, 164.81, 196.00, 246.94, 293.66], // Cmaj9
+    [174.61, 220.00, 261.63, 329.63],         // Fmaj7
+    [110.00, 130.81, 164.81, 196.00, 246.94], // Am9
+    [98.00, 123.47, 146.83, 185.00, 220.00]   // Gmaj9(add4)
+  ];
+
+  function ensureContext() {
+    if (audioCtx) return;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.5;
+
+    const lowpass = audioCtx.createBiquadFilter();
+    lowpass.type = 'lowpass';
+    lowpass.frequency.value = 3200;
+
+    // petit écho léger pour donner de l'espace, sans vraie réverb (coût faible)
+    delayNode = audioCtx.createDelay();
+    delayNode.delayTime.value = 0.55;
+    const feedback = audioCtx.createGain();
+    feedback.gain.value = 0.28;
+    const delayWet = audioCtx.createGain();
+    delayWet.gain.value = 0.25;
+
+    masterGain.connect(lowpass);
+    lowpass.connect(audioCtx.destination);
+    lowpass.connect(delayNode);
+    delayNode.connect(feedback);
+    feedback.connect(delayNode);
+    delayNode.connect(delayWet);
+    delayWet.connect(audioCtx.destination);
+  }
+
+  // une voix de pad : léger désaccord entre 2 oscillateurs pour un son "vivant"
+  function playPadVoice(freq, startTime, duration) {
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc1.type = 'sine';
+    osc2.type = 'triangle';
+    osc1.frequency.value = freq;
+    osc2.frequency.value = freq * 1.004; // très léger désaccord (chorus naturel)
+
+    const peak = 0.05;
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.linearRampToValueAtTime(peak, startTime + FADE);
+    gain.gain.setValueAtTime(peak, startTime + duration - FADE);
+    gain.gain.linearRampToValueAtTime(0.0001, startTime + duration);
+
+    osc1.connect(gain);
+    osc2.connect(gain);
+    gain.connect(masterGain);
+    osc1.start(startTime);
+    osc2.start(startTime);
+    osc1.stop(startTime + duration + 0.1);
+    osc2.stop(startTime + duration + 0.1);
+  }
+
+  function playChord(freqs, startTime) {
+    const duration = CHORD_DURATION + OVERLAP;
+    freqs.forEach((f) => playPadVoice(f, startTime, duration));
+  }
+
+  function scheduleChords() {
+    const now = audioCtx.currentTime + 0.1;
+    playChord(chords[chordIndex], now);
+    chordIndex = (chordIndex + 1) % chords.length;
+    chordTimer = window.setTimeout(scheduleChords, (CHORD_DURATION - OVERLAP) * 1000);
+  }
+
+  // fines étincelles aiguës et espacées aléatoirement, façon reflets sur l'eau
+  function scheduleShimmer() {
+    const now = audioCtx.currentTime;
+    const base = [523.25, 587.33, 659.25, 783.99, 880.00, 987.77];
+    const freq = base[Math.floor(Math.random() * base.length)] * 2;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    const peak = 0.02 + Math.random() * 0.015;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.linearRampToValueAtTime(peak, now + 1.4);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 4.5);
+    osc.connect(gain);
+    gain.connect(masterGain);
+    osc.start(now);
+    osc.stop(now + 4.6);
+
+    shimmerTimer = window.setTimeout(scheduleShimmer, 2200 + Math.random() * 3200);
+  }
+
+  function start() {
+    ensureContext();
+    audioCtx.resume().then(() => {
+      chordIndex = 0;
+      scheduleChords();
+      scheduleShimmer();
+      isPlaying = true;
+      btn.classList.add('playing');
+      btn.setAttribute('aria-pressed', 'true');
+      btn.setAttribute('aria-label', 'Couper la musique');
+      localStorage.setItem(STORAGE_KEY, 'on');
+    }).catch(() => { /* contexte bloqué, on reste silencieux */ });
+  }
+
+  function stop() {
+    if (chordTimer) window.clearTimeout(chordTimer);
+    if (shimmerTimer) window.clearTimeout(shimmerTimer);
+    if (audioCtx) audioCtx.suspend();
+    isPlaying = false;
+    btn.classList.remove('playing');
+    btn.setAttribute('aria-pressed', 'false');
+    btn.setAttribute('aria-label', 'Activer la musique');
+    localStorage.setItem(STORAGE_KEY, 'off');
+  }
+
+  btn.addEventListener('click', () => {
+    if (isPlaying) stop(); else start();
+  });
+
+  // Reprend la lecture automatiquement si le visiteur l'avait activée
+  // lors d'une précédente visite (nécessite quand même une interaction :
+  // on tente au premier clic/touch n'importe où sur la page).
+  if (localStorage.getItem(STORAGE_KEY) === 'on') {
+    const resumeOnce = () => {
+      start();
+      document.removeEventListener('pointerdown', resumeOnce);
+    };
+    document.addEventListener('pointerdown', resumeOnce, { once: true });
+  }
+})();
 </script>
 
 </body>

@@ -1,0 +1,50 @@
+name: Mise à jour analyse VirusTotal
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Tag à analyser (ex: v2.0.0). Vide = dernière release."
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  update-virustotal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Télécharger l'APK de la release
+        id: fetch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ github.event.inputs.release_tag }}"
+          if [ -z "$TAG" ]; then
+            TAG="${{ github.event.release.tag_name }}"
+          fi
+          if [ -z "$TAG" ]; then
+            TAG=$(gh release view --json tagName -q .tagName)
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          gh release download "$TAG" -p "*.apk" -O apk_file.apk --clobber
+
+      - name: Installer les dépendances
+        run: pip install requests
+
+      - name: Analyser et mettre à jour le site
+        env:
+          VT_API_KEY: ${{ secrets.VIRUSTOTAL_API_KEY }}
+        run: python3 .github/scripts/update_virustotal.py apk_file.apk
+
+      - name: Commit et push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html en/index.html
+          git diff --cached --quiet || git commit -m "chore: mise à jour analyse VirusTotal (${{ steps.fetch.outputs.tag }})"
+          git push

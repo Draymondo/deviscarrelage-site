@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Carrelo — Le calculateur de matériaux des carreleurs</title>
 <meta name="description" content="Carrelo calcule les carreaux, la colle, le sable et le ciment à commander pour un chantier. Gratuit, rapide, pensé pour les carreleurs.">
+<link rel="canonical" href="https://draymondo.github.io/deviscarrelage-site/carrelo/">
+<meta name="theme-color" content="#1565c0">
+<meta property="og:title" content="Carrelo — Le calculateur de matériaux des carreleurs">
+<meta property="og:description" content="Carreaux, colle, sable et ciment : les quantités à commander, en quelques secondes. Gratuit. Fait par un carreleur, pour les carreleurs.">
+<meta property="og:image" content="https://draymondo.github.io/deviscarrelage-site/carrelo/carrelo-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Carrelo — Le calculateur de matériaux des carreleurs">
+<meta property="og:url" content="https://draymondo.github.io/deviscarrelage-site/carrelo/">
+<meta property="og:site_name" content="Carrelo">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carrelo — Le calculateur de matériaux des carreleurs">
+<meta name="twitter:description" content="Carreaux, colle, sable et ciment : les quantités à commander, en quelques secondes. Gratuit.">
+<meta name="twitter:image" content="https://draymondo.github.io/deviscarrelage-site/carrelo/carrelo-og.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -180,7 +198,10 @@
 
   footer{padding:40px 0 60px; text-align:center; color:var(--texte-att); font-size:.82rem;}
   footer .wm{font-size:1.3rem; display:block; margin-bottom:8px;}
-  footer a{color:var(--texte-att);}
+  footer a{color:var(--texte-att); text-decoration:none; font-weight:600;}
+  footer a:hover{color:var(--texte); text-decoration:underline;}
+  .foot-links{display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin:6px 0 18px;}
+  .foot-copy{font-size:.76rem;}
 
   /* reveal */
   .rv{opacity:0; transform:translateY(18px); animation:rv .7s ease forwards;}
@@ -199,7 +220,7 @@
 <body>
 <div class="wrap">
 
-  <nav>
+  <nav id="top">
     <div class="wm">Carrel<span>o</span></div>
     <a class="lien" href="https://deviscarrelage-site.vercel.app/">DevisCarrelage →</a>
   </nav>
@@ -329,7 +350,12 @@
 
   <footer>
     <span class="wm">Carrel<span>o</span></span>
-    Une app ATMOS technology · <a href="https://deviscarrelage-site.vercel.app/">DevisCarrelage</a>
+    <div class="foot-links">
+      <a href="mailto:support.deviscarrelage@gmail.com">Support</a>
+      <a href="https://deviscarrelage-site.vercel.app/">DevisCarrelage</a>
+      <a href="#top">Haut de page</a>
+    </div>
+    <div class="foot-copy">© 2026 Carrelo — powered by ATMOS technology — Abidjan, Côte d'Ivoire</div>
   </footer>
 
 </div>

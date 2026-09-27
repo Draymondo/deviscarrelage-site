@@ -1,1 +1,251 @@
-zzz
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Politique de confidentialité — DevisCarrelage</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        max-width: 800px;
+        margin: 48px auto;
+        padding: 0 24px 64px;
+        color: #1e293b;
+        line-height: 1.75;
+        background: #fff;
+      }
+      header {
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 24px;
+        margin-bottom: 40px;
+      }
+      h1 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 6px;
+      }
+      .subtitle {
+        color: #64748b;
+        font-size: 14px;
+      }
+      h2 {
+        font-size: 17px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-top: 36px;
+        margin-bottom: 10px;
+        padding-left: 12px;
+        border-left: 3px solid #1992ff;
+      }
+      p {
+        color: #475569;
+        margin-bottom: 10px;
+      }
+      .tag {
+        display: inline-block;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 10px;
+        border-radius: 999px;
+        margin-bottom: 24px;
+      }
+      ul {
+        padding-left: 20px;
+        color: #475569;
+      }
+      ul li {
+        margin-bottom: 6px;
+      }
+      footer {
+        margin-top: 56px;
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+        color: #94a3b8;
+        font-size: 13px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Politique de confidentialité</h1>
+      <p class="subtitle">DevisCarrelage — Application Android</p>
+    </header>
+
+    <span class="tag">Dernière mise à jour : septembre 2026</span>
+
+    <h2>1. Collecte de données</h2>
+<p>
+      DevisCarrelage ne collecte <strong>aucune donnée personnelle identifiable</strong> liée à
+      votre activité professionnelle. L'application fonctionne entièrement hors ligne pour toutes
+      ses fonctionnalités principales. Toutes les informations saisies (nom du client,
+      coordonnées, surfaces, tarifs, devis) sont stockées uniquement sur votre appareil et ne sont
+      <strong>jamais transmises à un serveur externe</strong>. Seules des données d'usage anonymes
+      et agrégées sont collectées à des fins statistiques, comme détaillé à la section 7.
+    </p>
+
+    <h2>2. Stockage local des données</h2>
+    <p>
+      Les données sont stockées localement sur votre appareil via <em>AsyncStorage</em>
+      (stockage clé-valeur chiffré du système Android). Elles ne quittent jamais votre téléphone,
+      sauf si vous choisissez explicitement de partager un PDF.
+    </p>
+
+    <h2>3. Mode Express et analyse de texte</h2>
+    <p>
+      La fonctionnalité "Mode Express" analyse le texte que vous saisissez pour en extraire
+      automatiquement les zones, surfaces et tarifs. Cette analyse fonctionne en
+      <strong>deux étapes</strong> :
+    </p>
+    <ul>
+      <li>
+        <strong>Analyse locale (prioritaire) :</strong> un moteur de traitement de texte intégré à
+        l'application tente d'extraire les informations directement sur votre appareil, sans
+        connexion réseau.
+      </li>
+      <li>
+        <strong>Affinage via un serveur externe (si nécessaire) :</strong> si la fiabilité de
+        l'analyse locale est insuffisante (inférieure à 70%), le texte que vous avez saisi est
+        envoyé à un serveur d'analyse hébergé sur Railway
+        (<em>deviscarrelage-backend-production.up.railway.app</em>) afin d'améliorer le résultat. Un
+        message "Hors-ligne" s'affiche dans l'application si ce serveur est inaccessible.
+      </li>
+    </ul>
+    <p>
+      <strong>Important :</strong> le texte transmis au serveur contient uniquement la description
+      du chantier que vous avez saisie (zones, surfaces, tarifs). Il n'est pas associé à votre
+      identité, à votre appareil, ni à aucun compte utilisateur. Le serveur ne conserve aucun
+      historique de ces requêtes.
+    </p>
+
+    <h2>4. Widget Android</h2>
+    <p>
+      DevisCarrelage propose un widget "Mode Express" pour l'écran d'accueil Android. Ce widget
+      utilise les couleurs dynamiques Material You de votre système pour s'adapter à votre fond
+      d'écran. Ces informations de palette de couleurs sont lues localement depuis le système
+      Android et ne sont ni stockées ni transmises.
+    </p>
+
+    <h2>5. Partage des données</h2>
+    <p>
+      DevisCarrelage ne partage <strong>aucune donnée avec des tiers</strong>. Le partage d'un PDF
+      est une action volontaire et explicite de l'utilisateur, réalisée via les applications de
+      partage installées sur son propre appareil (messagerie, e-mail, etc.).
+    </p>
+
+    <h2>6. Permissions requises</h2>
+    <p>L'application peut demander les permissions Android suivantes :</p>
+    <ul>
+      <li>
+        <strong>Stockage (READ/WRITE_EXTERNAL_STORAGE)</strong> — pour sauvegarder les PDF générés
+        dans le dossier Documents de l'appareil.
+      </li>
+      <li>
+        <strong>Vibration (VIBRATE)</strong> — pour les retours haptiques lors des interactions
+        (navigation, actions importantes).
+      </li>
+      <li>
+        <strong>Widget écran d'accueil</strong> — pour afficher et mettre à jour le widget "Mode
+        Express" sur l'écran d'accueil Android.
+      </li>
+    </ul>
+    <p>Aucune de ces permissions n'est utilisée pour collecter ou transmettre des données.</p>
+
+<h2>7. Données analytiques</h2>
+    <p>
+      DevisCarrelage utilise <strong>Firebase Analytics</strong>, un service fourni par Google,
+      afin de mieux comprendre l'usage de l'application et d'orienter son amélioration. Ce service
+      collecte des <strong>données anonymes et agrégées</strong>, notamment :
+    </p>
+    <ul>
+      <li>
+        Des informations techniques sur l'appareil (modèle, système d'exploitation, pays
+        approximatif déterminé via l'adresse IP).
+      </li>
+      <li>
+        Des événements d'usage de l'application, tels que la création d'un devis, l'export d'un
+        PDF, ou l'utilisation du Mode Express — sans jamais inclure le contenu de vos devis
+        (noms de clients, tarifs, surfaces, etc.).
+      </li>
+      <li>
+        Des événements automatiques générés par Firebase (ouverture de l'application, temps
+        passé, écrans consultés).
+      </li>
+    </ul>
+    <p>
+      Ces données ne sont <strong>jamais associées à votre identité</strong> (nom, numéro de
+      téléphone, e-mail) et ne permettent pas de vous identifier personnellement. Conformément au
+      fonctionnement offline-first de l'application, ces informations sont mises en file d'attente
+      sur votre appareil et transmises aux serveurs de Google dès qu'une connexion internet est
+      disponible.
+    </p>
+    <p>
+      Ce traitement est réalisé par Google en tant que sous-traitant, selon sa propre politique de
+      confidentialité, consultable à l'adresse
+      <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.
+    </p>
+
+    <h2>8. Sécurité</h2>
+    <p>
+      Vos données restant exclusivement sur votre appareil, leur sécurité dépend de la protection de
+      votre téléphone (verrouillage, chiffrement Android). Nous vous recommandons d'activer le
+      verrouillage écran et la sauvegarde automatique de votre appareil pour éviter toute perte de
+      données.
+    </p>
+
+    <h2>9. Droits de l'utilisateur</h2>
+    <p>
+      Puisque toutes vos données de devis sont stockées localement, vous en restez l'unique
+      propriétaire et maître. Vous pouvez les supprimer à tout moment en désinstallant
+      l'application ou en vidant l'historique depuis l'écran Paramètres de l'application.
+    </p>
+    <p>
+      Conformément au Règlement Général sur la Protection des Données (RGPD) et aux
+      réglementations équivalentes, vous disposez également des droits suivants concernant les
+      données collectées via DevisCarrelage :
+    </p>
+    <ul>
+      <li><strong>Droit d'accès</strong> — vous pouvez demander à savoir quelles données vous
+      concernant sont traitées.</li>
+      <li><strong>Droit de rectification</strong> — vous pouvez demander la correction de données
+      inexactes.</li>
+      <li><strong>Droit à l'effacement</strong> — vous pouvez demander la suppression des données
+      vous concernant, dans la limite de ce que la loi nous oblige à conserver.</li>
+      <li><strong>Droit d'opposition</strong> — vous pouvez vous opposer à tout moment à la
+      collecte de statistiques d'usage anonymes décrite à la section 7.</li>
+    </ul>
+    <p>
+      Pour exercer l'un de ces droits, contactez-nous à
+      <a href="mailto:support.deviscarrelage@gmail.com">support.deviscarrelage@gmail.com</a>.
+      Nous répondrons dans un délai raisonnable, généralement sous 30 jours. Pour rappel, les
+      seules données concernées par cette section sont les statistiques d'usage anonymes décrites
+      à la section 7 — aucune donnée de devis n'est jamais transmise en dehors de votre appareil.
+    </p>
+
+    <h2>10. Modifications de cette politique</h2>
+    <p>
+      Toute mise à jour significative de cette politique sera mentionnée dans les notes de version
+      publiées sur le Google Play Store.
+    </p>
+
+    <h2>11. Contact</h2>
+    <p>
+      Pour toute question concernant cette politique de confidentialité, contactez-nous à
+      <a href="mailto:support.deviscarrelage@gmail.com">support.deviscarrelage@gmail.com</a>
+      ou via la fiche de l'application sur le Google Play Store.
+    </p>
+
+    <footer>
+      &copy; 2026 DevisCarrelage — Construit à Abidjan 🇨🇮 — powered by ATMOS technology
+    </footer>
+  </body>
+</html>

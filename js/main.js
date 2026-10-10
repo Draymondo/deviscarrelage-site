@@ -198,7 +198,7 @@ const trackEvent = (name) => {
 // 1. Clics (demo, download, privacy, contact)
 document.getElementById('demoBtn')?.addEventListener('click', () => trackEvent('demo_used'));
 document.getElementById('downloadBtn')?.addEventListener('click', () => trackEvent('download_apk'));
-document.querySelector('a[href*="privacy"], a[href*="confidentialite"]')?.addEventListener('click', () => trackEvent('privacy_view'));
+document.querySelector('a[href*="privacy"]').addEventListener('click', () => trackEvent('privacy_view'));
 document.querySelector('a[href^="mailto"]').addEventListener('click', () => trackEvent('contact_email'));
 
 // 3. Site Open (au chargement)
